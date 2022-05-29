@@ -1,3 +1,7 @@
+//
+// TODO: Tätä voisi siistiä, mutta
+// ei ole ratkaisun kannalta oleellinen.
+//
 const NotFound = () => {
   return (
     <div>
