@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Solidabis koodihaaste 2022
 
-## Getting Started
+## Toteutuksesta:
 
-First, run the development server:
+Frontend toteutettu käyttäen Next.js React-frameworkkia. Päädyin tähän ratkaisuun, koska Next tuo ns "vanilla" Reactin päälle kivoja ominaisuuksia, kuten kansiorakenteeseen perustuvan routetuksen "out of the box". Tässä toteutuksessa Nextin kaikista kuumimmat ominaisuuden eivät tule juurikaan esille (ssr, isr), joten myös perus Reactilla olisi voinut saavuttaa saman ratkaisun. Olen kommentoinut koodiin **suomeksi** hieman ajatuksenjuoksuani joissakin kohdissa.
 
-```bash
-npm run dev
-# or
+Bäkkäriin en tehnyt muutoksia, koska Java skills 404. Bäkkärin puolella olisi kuitenkin syytä tehdä muutoksia, mikäli tästä olisi halunnut paremman.
+
+Toteutus on hostattuna VPS-palvelimellani: https://koodihaaste.kassq.dev/
+
+## Käynnistys / käyttö:
+
+###### Huomioita:
+
+- Node.js 16+ vaadittu
+- yarn-paketinhallintatyökalu
+
+###### Asennus:
+
+1. Kloonaa repository
+
+```
+git clone https://github.com/KasperiP/lounastutka.git
+```
+
+2. Asenna riippuvuudet frontend hakemistossa
+
+```
+cd frontend && yarn
+```
+
+Testit voi ajaa komennolla `yarn test` .
+
+2. Käynnistä backend sen omien ohjeiden mukaan (docker / gradlew)
+
+3. Käynnistä frontend
+
+```
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Navigoi sivulle selaimessa: http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Teknologiat:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js 12.1.6 (React 18.1.0)
+- Material UI
+- Jest
