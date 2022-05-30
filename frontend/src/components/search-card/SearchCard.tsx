@@ -344,7 +344,9 @@ const SearchCard = ({ handleVote, result }: SearchCardProps) => {
                       <Typography sx={{ mb: 0.5 }} variant="body1">
                         <strong>Lisätiedot:</strong>
                       </Typography>
-                      <Box sx={{ display: "flex", gap: 1 }}>
+                      <Box
+                        sx={{ display: "flex", gap: 1, flexFlow: "row wrap" }}
+                      >
                         <RenderRestaurantTags dishes={restaurant.dishes} />
                       </Box>
                     </Box>
