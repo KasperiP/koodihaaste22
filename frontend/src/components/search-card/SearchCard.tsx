@@ -118,7 +118,7 @@ const SearchCard = ({ handleVote, result }: SearchCardProps) => {
     const results = globalState?.results?.restaurants;
     if (!results) return [];
     if (filterResults) {
-      return results.filter((r) => r.openingHours === "ei lounasta");
+      return results.filter((r) => r.openingHours !== "ei lounasta");
     } else {
       return results;
     }
@@ -129,7 +129,7 @@ const SearchCard = ({ handleVote, result }: SearchCardProps) => {
     if (!results) return 0;
 
     const filteredResults = results?.filter(
-      (r) => r?.openingHours === "ei lounasta"
+      (r) => r?.openingHours !== "ei lounasta"
     );
 
     const filteredResultsExist = results?.length !== filteredResults?.length;
@@ -249,11 +249,9 @@ const SearchCard = ({ handleVote, result }: SearchCardProps) => {
           >
             <Typography sx={{ mt: 2 }} variant="body1">
               <strong>Hakutuloksia:</strong>{" "}
-              {
-                globalState.results.restaurants?.filter(
-                  (r) => r?.openingHours === "ei lounasta"
-                ).length
-              }
+              {filterResults
+                ? globalState?.results.restaurants.length - filteredCount()
+                : globalState?.results.restaurants.length}
             </Typography>
             {filteredCount() > 0 && (
               <>
