@@ -38,14 +38,14 @@ const LunchlistModal = ({ open, setOpen, restaurant }: LunchlistModalProps) => {
 
   return (
     <Modal
-      aria-describedby="Näyttää ravintolan lounaslistan, mikäli se on saatavilla."
+      aria-describedby="Näyttää ravintolan lounaslistan."
       aria-labelledby="Lounaslista modaali"
       open={open}
       onClose={handleClose}
     >
       <Card sx={style}>
         <CardHeader
-          subheader={`Tässä näet ravintolan ${restaurant.name} lounasvaihtoehdot, mikäli ne ovat saatavilla.`}
+          subheader={`Tässä näet ravintolan ${restaurant.name} lounasvaihtoehdot.`}
           title="Lounaslista"
         />
         <Divider />
@@ -61,7 +61,14 @@ const LunchlistModal = ({ open, setOpen, restaurant }: LunchlistModalProps) => {
                   <Typography sx={{ my: 0.5 }}>
                     {dish.price || "Ei hintaa"}
                   </Typography>
-                  <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: 1,
+                      mb: 2,
+                      flexFlow: "row wrap",
+                    }}
+                  >
                     <RenderDishTags attributes={dish.attributes} />
                   </Box>
                   <Divider />
