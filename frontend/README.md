@@ -4,7 +4,7 @@
 
 Frontend toteutettu käyttäen Next.js React-frameworkkia. Päädyin tähän ratkaisuun, koska Next tuo ns "vanilla" Reactin päälle kivoja ominaisuuksia, kuten kansiorakenteeseen perustuvan routetuksen "out of the box". Tässä toteutuksessa Nextin kaikista kuumimmat ominaisuuden eivät tule juurikaan esille (ssr, isr), joten myös perus Reactilla olisi voinut saavuttaa saman ratkaisun. Olen kommentoinut koodiin **suomeksi** hieman ajatuksenjuoksuani joissakin kohdissa.
 
-Bäkkäriin en tehnyt muutoksia, koska Java skills 404. Bäkkärin puolella olisi kuitenkin syytä tehdä muutoksia, mikäli tästä olisi halunnut paremman.
+Bäkkäriin en tehnyt muutoksia, koska Java skills 404. Bäkkärin puolella olisi kuitenkin syytä tehdä muutoksia, mikäli tästä olisi halunnut paremman. Todellisessa tuotantoympäristössä frontin jakeleminen olisi syytä hoitaa Java backendin kautta, mutta en tämän kanssa lähtenyt kikkailemaan. Next.js tarvitsee myös [oman Node prosessinsa](https://nextjs.org/docs/advanced-features/custom-server) optimaaliseen suorituskykyyn, mutta tässä sillä ei olisi ollut juurikaan merkitystä.
 
 Toteutus on hostattuna VPS-palvelimellani: https://koodihaaste.kassq.dev/
 
