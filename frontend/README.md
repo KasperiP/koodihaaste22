@@ -6,6 +6,8 @@ Frontend toteutettu käyttäen Next.js React-frameworkkia. Päädyin tähän rat
 
 Bäkkäriin en tehnyt muutoksia, koska Java skills 404. Bäkkärin puolella olisi kuitenkin syytä tehdä muutoksia, mikäli tästä olisi halunnut paremman. Todellisessa tuotantoympäristössä frontin jakeleminen olisi syytä hoitaa Java backendin kautta, mutta en tämän kanssa lähtenyt kikkailemaan. Next.js tarvitsee myös [oman Node prosessinsa](https://nextjs.org/docs/advanced-features/custom-server) optimaaliseen suorituskykyyn, mutta tässä sillä ei olisi ollut juurikaan merkitystä.
 
+Testeistä vielä sen verran että en tosiaan oo juurikaan kirjoitellut testejä omissa harrasteprojekteissa, joten testit on luokkaa ensikertalainen. Lisäksi jätin vähän turhan viimetippaan testien kirjoittamisen, niin testikattavuus todella kehno. On sentään Typescriptiä, niin ei ainakaan tyypittelyvirheitä pitäs hirviästi olla :D
+
 Toteutus on hostattuna VPS-palvelimellani: https://koodihaaste.kassq.dev/
 
 ## Käynnistys / käyttö:
