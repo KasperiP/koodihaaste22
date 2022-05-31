@@ -10,6 +10,7 @@ interface TopCardProps {
 
 const TopCard = ({ placement, result }: TopCardProps) => {
   const theme = useTheme();
+  if (!result) return null;
 
   const top = result?.results.sort((a, b) => b.votes - a.votes);
 
