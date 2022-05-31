@@ -95,15 +95,11 @@ const SearchCard = ({ handleVote, result }: SearchCardProps) => {
   // tapauksissa siellä on yksi alkio, jonka nimi on tyhjä.
   // Tämä ongelma on korjattu alhaalla.
   //
-  const handleDisabled = (
-    dishes: ApiResultsCityResponse["restaurants"][number]["dishes"]
-  ) => {
+  const handleDisabled = (dishes: Dish[]) => {
     return dishes.length === 0 || dishes[0].name === "";
   };
 
-  const handleModal = (
-    restaurant: ApiResultsCityResponse["restaurants"][number]
-  ) => {
+  const handleModal = (restaurant: Restaurant) => {
     const bool = !openModal;
     setOpenModal(bool);
     setModalRestaurant(restaurant);
