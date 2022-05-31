@@ -1,4 +1,4 @@
-import { formatOpeningHours } from "../../src/utils/functions";
+import { formatOpeningHours } from "@utils/functions";
 
 describe("formatOpeningHours", () => {
   it("format time returns correct string", () => {

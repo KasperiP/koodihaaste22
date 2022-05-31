@@ -1,5 +1,5 @@
+import ResultsCard from "@components/results-card/ResultsCard";
 import { render } from "@testing-library/react";
-import ResultsCard from "../../src/components/results-card/ResultsCard";
 import { ApiResultsReponse } from "../../src/types/ApiReponses";
 
 describe("ResultsCard", () => {

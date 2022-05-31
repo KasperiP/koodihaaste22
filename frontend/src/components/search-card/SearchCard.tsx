@@ -1,3 +1,6 @@
+import LunchlistModal from "@components/lunchlist-modal/LunchlistModal";
+import { RenderRestaurantTags } from "@components/render-tags/RenderTags";
+import { VoteContext } from "@context/ContextProvider";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import {
@@ -13,18 +16,16 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import cities from "@utils/finlandCities";
+import { formatOpeningHours } from "@utils/functions";
 import { SyntheticEvent, useContext, useState } from "react";
-import { VoteContext } from "../../context/ContextProvider";
 import fetcher from "../../fetcher";
 import {
   ApiResultsCityResponse,
   ApiResultsReponse,
+  Dish,
   Restaurant,
 } from "../../types/ApiReponses";
-import cities from "../../utils/finlandCities";
-import { formatOpeningHours } from "../../utils/functions";
-import LunchlistModal from "../lunchlist-modal/LunchlistModal";
-import { RenderRestaurantTags } from "../render-tags/RenderTags";
 
 const boxStyles = {
   height: "100%",

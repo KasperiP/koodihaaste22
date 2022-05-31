@@ -1,5 +1,5 @@
+import LunchlistModal from "@components/lunchlist-modal/LunchlistModal";
 import { render } from "@testing-library/react";
-import LunchlistModal from "../../src/components/lunchlist-modal/LunchlistModal";
 import { Restaurant } from "../../src/types/ApiReponses";
 
 interface LunchlistModalProps {

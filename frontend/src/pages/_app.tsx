@@ -1,9 +1,9 @@
+import ContextProvider from "@context/ContextProvider";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { ReactElement, ReactNode } from "react";
-import ContextProvider from "../context/ContextProvider";
 import { theme } from "../theme";
 
 //

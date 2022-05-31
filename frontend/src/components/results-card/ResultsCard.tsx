@@ -1,3 +1,4 @@
+import { VoteContext } from "@context/ContextProvider";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import {
   Box,
@@ -8,7 +9,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { useContext } from "react";
-import { VoteContext } from "../../context/ContextProvider";
 import { ApiResultsReponse } from "../../types/ApiReponses";
 
 const boxStyles = {
