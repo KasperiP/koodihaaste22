@@ -1,3 +1,11 @@
+import Footer from "@components/footer/Footer";
+import HeroCard from "@components/hero-card/HeroCard";
+import Navbar from "@components/navbar/Navbar";
+import ResultsCard from "@components/results-card/ResultsCard";
+import SearchCard from "@components/search-card/SearchCard";
+import TopCard from "@components/top-card/TopCard";
+import { VoteContext } from "@context/ContextProvider";
+import Layout from "@layouts/Layout";
 import { Box, Card, Container, Grid } from "@mui/material";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
@@ -10,15 +18,7 @@ import {
   useState,
 } from "react";
 import useSWR from "swr";
-import Footer from "../components/footer/Footer";
-import HeroCard from "../components/hero-card/HeroCard";
-import Navbar from "../components/navbar/Navbar";
-import ResultsCard from "../components/results-card/ResultsCard";
-import SearchCard from "../components/search-card/SearchCard";
-import TopCard from "../components/top-card/TopCard";
-import { VoteContext } from "../context/ContextProvider";
 import fetcher from "../fetcher";
-import Layout from "../layouts/Layout";
 import {
   ApiResultsCityResponse,
   ApiResultsReponse,
