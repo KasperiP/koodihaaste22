@@ -1,24 +1,12 @@
-import Home from "@pages/index";
+import SearchCard from "@components/search-card/SearchCard";
+import ContextProvider from "@context/ContextProvider";
 import { render } from "@testing-library/react";
+import user from "@testing-library/user-event";
 import { DefaultBodyType, rest } from "msw";
 import { setupServer } from "msw/node";
+import { act } from "react-dom/test-utils";
+
 const server = setupServer(
-  rest.get<DefaultBodyType>("/api/v1/results", (req, res, ctx) => {
-    return res(
-      ctx.json({
-        date: "2022-05-30",
-        results: [
-          {
-            votes: 1,
-            restaurantid:
-              "9591d73811b571c61edfcac6d7dcfe85b123431c30c2dd357070ad1f12855b03",
-            name: "Woolshed Helsinki",
-            city: "Helsinki",
-          },
-        ],
-      })
-    );
-  }),
   rest.get<DefaultBodyType>("/api/v1/restaurants/helsinki", (req, res, ctx) => {
     return res(
       ctx.json({
@@ -211,6 +199,15 @@ const server = setupServer(
         ],
       })
     );
+  }),
+  rest.get<DefaultBodyType>("/api/v1/restaurants/:any", (req, res, ctx) => {
+    return res(
+      ctx.json({
+        alreadyVoted: null,
+        date: "2022-05-30",
+        restaurants: [],
+      })
+    );
   })
 );
 
@@ -218,12 +215,86 @@ beforeAll(() => server.listen());
 afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
 
-describe("Index page", () => {
-  fit("should render the index page without errors", async () => {
-    const { getByText } = render(<Home />);
+describe("SearchCard", () => {
+  let handleVote: any;
+  let results: any;
+  beforeAll(() => {
+    handleVote = jest.fn();
+    results = {
+      date: "2022-05-30",
+      results: [
+        {
+          votes: 10,
+          restaurantid:
+            "9591d73811b571c61edfcac6d7dcfe85b123431c30c2dd357070ad1f12855b03",
+          name: "Woolshed Helsinki",
+          city: "Helsinki",
+        },
+      ],
+    };
+  });
 
-    expect(getByText("Lounastutka")).toBeInTheDocument();
+  it("should render SearchCard without crashing", () => {
+    const { getByText } = render(
+      <SearchCard handleVote={handleVote} result={results} />
+    );
+    expect(getByText("Hae ravintolat")).toBeInTheDocument();
     expect(getByText("Hae kaupunki")).toBeInTheDocument();
-    expect(getByText("Äänestä ravintolaa")).toBeInTheDocument();
+  });
+
+  it("input should error", async () => {
+    const { getByLabelText, getByRole, getByText } = render(
+      <SearchCard handleVote={handleVote} result={results} />
+    );
+    const input = getByLabelText("Hae kaupunkia");
+    await user.type(input, "a");
+
+    const button = getByRole("button", {
+      name: /hae ravintolat/i,
+    });
+    await user.click(button);
+
+    expect(getByText("Kirjoita kaupunki")).toBeInTheDocument();
+  });
+
+  it("shouldn't find results", async () => {
+    const { getByLabelText, getByRole, getByTestId } = render(
+      <ContextProvider>
+        <SearchCard handleVote={handleVote} result={results} />
+      </ContextProvider>
+    );
+    const input = getByLabelText("Hae kaupunkia");
+    const button = getByRole("button", {
+      name: /hae ravintolat/i,
+    });
+
+    await act(async () => {
+      await user.type(input, "helsinkii");
+      await user.click(button);
+      await new Promise((r) => setTimeout(r, 500));
+    });
+
+    expect(getByTestId("result-text")).toHaveTextContent("Hakutuloksia: 0");
+  });
+
+  it("should render results", async () => {
+    const { getByLabelText, getByRole, getByText } = render(
+      <ContextProvider>
+        <SearchCard handleVote={handleVote} result={results} />
+      </ContextProvider>
+    );
+    const input = getByLabelText("Hae kaupunkia");
+    const button = getByRole("button", {
+      name: /hae ravintolat/i,
+    });
+
+    await act(async () => {
+      await user.type(input, "HeLsInKi");
+      await user.click(button);
+      await new Promise((r) => setTimeout(r, 500));
+    });
+
+    expect(getByText("NOM Helsinki")).toBeInTheDocument();
+    expect(getByText("Antell K-Auto Helsinki")).toBeInTheDocument();
   });
 });

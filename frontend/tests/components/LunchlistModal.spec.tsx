@@ -54,9 +54,7 @@ describe("LunchlistModal", () => {
     }
 
     expect(
-      getByText(
-        `Tässä näet ravintolan ${restaurantName} lounasvaihtoehdot, mikäli ne ovat saatavilla.`
-      )
+      getByText(`Tässä näet ravintolan ${restaurantName} lounasvaihtoehdot.`)
     ).toBeInTheDocument();
 
     expect(getByText(dishName)).toBeInTheDocument();

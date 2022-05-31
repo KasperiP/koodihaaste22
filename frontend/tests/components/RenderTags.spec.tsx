@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
 import {
   RenderDishTags,
   RenderRestaurantTags,
-} from "../../src/components/render-tags/RenderTags";
+} from "@components/render-tags/RenderTags";
+import { render } from "@testing-library/react";
 import { Dish } from "../../src/types/ApiReponses";
 
 const commonFoodAttributes = {
