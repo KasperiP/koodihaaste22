@@ -35,15 +35,15 @@ const TopCard = ({ placement, result }: TopCardProps) => {
             <EmojiEventsIcon sx={{ color: "white" }} />
           </span>
 
-          <Typography component="h2" variant="h6">
+          <Typography component="h2" data-testid="top-city" variant="h6">
             {top?.[placement - 1]?.name ?? "N/A"}
           </Typography>
         </Box>
         <Box sx={{ mt: 1, display: "flex", justifyContent: "space-between" }}>
-          <Typography>
+          <Typography data-testid="top-placement">
             <strong>Sijalla:</strong> #{placement}
           </Typography>
-          <Typography>
+          <Typography data-testid="top-votes">
             <strong>Äänet:</strong> {top?.[placement - 1]?.votes ?? 0}
           </Typography>
         </Box>

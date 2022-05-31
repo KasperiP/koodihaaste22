@@ -244,7 +244,11 @@ const SearchCard = ({ handleVote, result }: SearchCardProps) => {
               flexDirection: isMobile ? "column" : "row",
             }}
           >
-            <Typography sx={{ mt: 2 }} variant="body1">
+            <Typography
+              data-testid="result-text"
+              sx={{ mt: 2 }}
+              variant="body1"
+            >
               <strong>Hakutuloksia:</strong>{" "}
               {filterResults
                 ? globalState?.results.restaurants.length - filteredCount()
