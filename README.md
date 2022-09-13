@@ -1,44 +1,57 @@
 # Solidabis koodihaaste 2022
 
-Tehtävänäsi on toteuttaa lounaspaikkaäänestyssovelluksen frontend valmista APIa vasten (työkalut saat valita itse).
-Arvosteluperusteet tärkeysjärjestyksessä:
+#### EDIT:
 
- 1. Ratkaisun oikeellisuus
-    1. ravintoloiden haku paikkakuntakohtaisesti
-    2. äänen antaminen, muuttaminen ja poistaminen
-    3. äänestystulosten esittäminen reaaliajassa
- 2. Testit
- 3. Ratkaisun selkeys ja yksinkertaisuus
- 4. Käyttöliittymäratkaisut
+_Ratkaisuni riitti koodihaasteessa sijaan **#2** ja verkkiksen **200€ lahjakortti** turvattu. Kiitos Solidabis haasteesta. Seuraavaa odotellessa :)
+Lue lisää voittajista (ja mitä minun ratkaisustani on kommentoitu) [Solidabiksen sivuilta](https://www.solidabis.com/ajankohtaista/koodihaasteen-2022-voittajat/). ❤️_
 
-Tässä repositoryssä on valmis Spring Bootilla toteutettu backend, joka toteuttaa lounaspaikkojen
-haku- ja äänestyslogiikan käyttäen Lounaat.info -palvelua.
+## Mistä on kyse?
 
-Backendin ajamiseen tarvitset JDK:n (versio>=11) ja/tai Dockerin asennettuna työasemallesi.
+Tämä repository sisältää ratkaisuni Solidabiksen vuoden 2022 koodihaaste kilpailuun. Kilpailun alkuperäisen repositoryn voit löytää [täältä](https://github.com/SolidabisOy/koodihaaste22)
 
-Backendin käynnistys:
+## Toteutuksesta:
 
-    ./gradlew bootRun
+Frontend toteutettu käyttäen Next.js React-frameworkkia. Päädyin tähän ratkaisuun, koska Next tuo ns "vanilla" Reactin päälle kivoja ominaisuuksia, kuten kansiorakenteeseen perustuvan routetuksen "out of the box". Tässä toteutuksessa Nextin kaikista kuumimmat ominaisuuden eivät tule juurikaan esille (ssr, isr), joten myös perus Reactilla olisi voinut saavuttaa saman ratkaisun. Olen kommentoinut koodiin **suomeksi** hieman ajatuksenjuoksuani joissakin kohdissa.
 
-tai Dockerilla:
+Bäkkäriin en tehnyt muutoksia, koska Java skills 404. Bäkkärin puolella olisi kuitenkin syytä tehdä muutoksia, mikäli tästä olisi halunnut paremman. Todellisessa tuotantoympäristössä frontin jakeleminen olisi syytä hoitaa Java backendin kautta, mutta en tämän kanssa lähtenyt kikkailemaan. Next.js tarvitsee myös [oman Node prosessinsa](https://nextjs.org/docs/advanced-features/custom-server) optimaaliseen suorituskykyyn, mutta tässä sillä ei olisi ollut juurikaan merkitystä.
 
-    docker run -p 8080:8080 solidabis/koodihaaste22:latest
+Testeistä vielä sen verran että en tosiaan oo juurikaan kirjoitellut testejä omissa harrasteprojekteissa, joten testit on luokkaa ensikertalainen. Lisäksi jätin vähän turhan viimetippaan testien kirjoittamisen, niin testikattavuus todella kehno. On sentään Typescriptiä, niin ei ainakaan tyypittelyvirheitä pitäs hirviästi olla :D
 
-Tutustu API-dokumentaatioon http://localhost:8080/swagger-ui.html
+## Käynnistys / käyttö:
 
-Päivä/selainkohtainen äänioikeus on toteutettu HTTP-only -cookiella.
+###### Huomioita:
 
-# Palautus
+-   Node.js 16+ vaadittu
+-   yarn-paketinhallintatyökalu
 
-_Forkkaa tästä repositorystä oma julkinen ratkaisureposi_ ja lähetä linkki 31.5.2022 mennessä sähköpostilla osoitteeseen
-koodihaaste@solidabis.com. Muokkaa README.md -tiedostoa siten, että siitä ilmenee vastauksen
-tarkastelua helpottavat tiedot, kuten käyttämäsi teknologiat ja muutaman lauseen kuvaus tekemistäsi
-ratkaisuista. Voit myös julkaista ratkaisusi esim. Herokuun, muista liittää linkki ja mahdolliset salasanat sähköpostiin!
+###### Asennus:
 
-Backendin muuttaminen esim. autentikoinnin toteuttamiseksi on sallittua.
+1. Kloonaa repository
 
-Kerro samalla haluatko osallistua vain kilpailuun ja arvontaan, vai haluatko Solidabiksen
-ottavan yhteyttä myös työtarjouksiin liittyen. Se ei tarkoita, että sinulle lähetettäisiin roskapostia, vaan nimensä
-mukaisesti esimerkiksi kutsu työhaastatteluun. Voit halutessasi
-osallistua koodihasteeseen myös ilman, että haluat ottaa palkintoa
-vastaan tai osallistua arvontaan.
+```
+git clone https://github.com/KasperiP/lounastutka.git
+```
+
+2. Asenna riippuvuudet frontend hakemistossa
+
+```
+cd frontend && yarn
+```
+
+Testit voi ajaa komennolla `yarn test` .
+
+2. Käynnistä backend sen omien ohjeiden mukaan (docker / gradlew)
+
+3. Käynnistä frontend
+
+```
+yarn dev
+```
+
+4. Navigoi sivulle selaimessa: http://localhost:3000
+
+## Teknologiat:
+
+-   Next.js 12.1.6 (React 18.1.0)
+-   Material UI
+-   Jest
